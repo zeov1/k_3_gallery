@@ -16,7 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from gallery.views import index, news_index, news, profile
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('', index, name='index'),
+    path('news/', news_index, name='news_index'),
+    path('news/<int:page_number>/', news, name='news'),
+    path('profile/<str:username>/', profile, name='profile'),
+    path('admin/', admin.site.urls, name='admin'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

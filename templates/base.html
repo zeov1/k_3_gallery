@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>{% block title %}Gallery{% endblock title %}</title>
+
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicons/favicon-16x16.png' %}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+<header>
+    <div class="container">
+        <h1>Gallery</h1>
+    </div>
+</header>
+<section class="nav-section">
+    <div class="container">
+        <nav class="nav">
+            <ul class="nav">
+                <li class="nav"><a href="{% url 'news_index' %}">News</a></li>
+                <li class="nav"><a href="{% url 'profile' username %}">Profile</a></li>
+                <li class="nav"><a href="{% url 'admin:index' %}">Admin</a></li>
+            </ul>
+        </nav>
+    </div>
+</section>
+<section class="content">
+    {% block content %}...{% endblock content %}
+</section>
+<footer>
+    <div class="container">
+        © 2024 zeovl
+    </div>
+</footer>
+</body>
+</html>

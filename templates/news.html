@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}News{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="gallery-grid">
+            {% for image in images %}
+                <div class="gallery-flex">
+                    <div class="gallery-img">
+                        <img class="gallery-img" src="{{ image.img.url }}" alt="image...">
+                    </div>
+                    <p class="gallery-img">{{ image.caption }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
