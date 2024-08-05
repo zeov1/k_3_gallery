@@ -21,14 +21,18 @@
         <nav class="nav">
             <ul class="nav">
                 <li class="nav"><a href="{% url 'news_index' %}">News</a></li>
-                <li class="nav"><a href="{% url 'profile' username %}">Profile</a></li>
+                {% if is_authenticated %}
+                    <li class="nav"><a href="{% url 'profile' username %}">Profile</a></li>
+                {% else %}
+                    <li class="nav"><a href="{% url 'login' %}">Sign in</a></li>
+                {% endif %}
                 <li class="nav"><a href="{% url 'admin:index' %}">Admin</a></li>
             </ul>
         </nav>
     </div>
 </section>
 <section class="content">
-    {% block content %}...{% endblock content %}
+    {% block content %}{% endblock content %}
 </section>
 <footer>
     <div class="container">
