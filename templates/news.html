@@ -8,11 +8,31 @@
             {% for image in images %}
                 <div class="gallery-flex">
                     <div class="gallery-img">
-                        <img class="gallery-img" src="{{ image.img.url }}" alt="image...">
+                        <img class="gallery-img" src="{{ image.img.url }}" alt="{{ image.caption }}">
                     </div>
-                    <p class="gallery-img" title="{{ image.caption }}">{{ image.caption }}</p>
+                    <p class="gallery-img">{{ image.author.username }} | {{ image.date }} | {{ image.time }}</p>
                 </div>
             {% endfor %}
         </div>
     </div>
 {% endblock content %}
+
+{% block bottom_nav %}
+    <section class="bottom-naw-section">
+        <div class="container">
+            <div class="bottom-nav-wrapper">
+                {% if prev_page %}
+                    <a class="arrow" href="{% url 'news' prev_page %}">←</a>
+                {% else %}
+                    <span class="arrow"></span>
+                {% endif %}
+                <p>page {{ page_number }} / {{ max_page }}</p>
+                {% if next_page %}
+                    <a class="arrow" href="{% url 'news' next_page %}">→</a>
+                {% else %}
+                    <span class="arrow"></span>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock bottom_nav %}

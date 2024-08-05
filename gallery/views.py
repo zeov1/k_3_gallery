@@ -26,7 +26,17 @@ def news(request, page_number):
 
     show_posts = 15  # how many posts are going to be shown at one page
     first_post_number = show_posts * (page_number - 1)
-    context['images'] = Image.objects.all()[::-1][first_post_number:show_posts + first_post_number]
+    queryset = Image.objects.all()
+    context['images'] = queryset[::-1][first_post_number:show_posts + first_post_number]
+
+    length = len(queryset)
+    max_page = (length + show_posts) // show_posts
+    context['max_page'] = max_page
+    context['page_number'] = page_number
+    if page_number > 1:
+        context['prev_page'] = page_number - 1
+    if page_number < max_page:
+        context['next_page'] = page_number + 1
     return render(request, 'news.html', context)
 
 
