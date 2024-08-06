@@ -1,0 +1,13 @@
+{% extends 'gallery/base.html' %}
+{% block title %}Authorization{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <form action="{% url 'login_done' %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="profile-button" type="submit">Submit</button>
+        </form>
+        <p>No account yet? <a href="{% url 'signup' %}">Sign up</a>!</p>
+    </div>
+{% endblock content %}

@@ -1,7 +1,7 @@
 from django.contrib.auth.models import User
-from django.shortcuts import render
-from django.shortcuts import redirect
 from django.shortcuts import get_object_or_404
+from django.shortcuts import redirect
+from django.shortcuts import render
 
 from .models import Image
 
@@ -47,10 +47,8 @@ def profile(request, username):
         'last_name': user.last_name,
         'profile_picture': None,
         'email': user.email,
+        'username': username,
+        'is_authenticated': request.user.is_authenticated,
+        'is_their_profile': request.user.username == username,
     }
-    if request.user.is_authenticated:
-        context['is_authenticated'] = True
-        context['username'] = request.user.username
-    else:
-        context['is_authenticated'] = False
     return render(request, 'gallery/profile.html', context)

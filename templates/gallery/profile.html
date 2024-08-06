@@ -8,9 +8,9 @@
         <p>First name: {{ first_name }}</p>
         <p>Last name: {{ last_name }}</p>
         <p>Email: <a href="mailto:{{ email }}">{{ email }}</a></p>
-        {% if is_authenticated %}
-            <a href="{% url 'login' %}">Edit</a>
-            <a href="{% url 'logout' %}">Sign out</a>
+        {% if is_their_profile %}
+            <a class="profile-button" href="#">Edit</a>
+            <a class="profile-button" href="{% url 'logout' %}">Sign out</a>
         {% endif %}
     </div>
 {% endblock content %}

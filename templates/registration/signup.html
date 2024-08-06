@@ -1,8 +1,9 @@
 {% extends 'gallery/base.html' %}
+{% block title %}Registration{% endblock %}
 
 {% block content %}
     <div class="container">
-        <form method="POST">
+        <form action="{% url 'signup_done' %}" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Submit</button>
