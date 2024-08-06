@@ -55,6 +55,10 @@ footer {
     color: white;
 }
 
+input {
+    border: none;
+}
+
 /* Gallery */
 
 .gallery-grid {
@@ -166,8 +170,13 @@ p.gallery-img {
 
 /* 992-1200 */
 @media screen and (max-width: 1200px) {
-    body {
+    body, input, .profile-button {
         font-size: 40px;
+    }
+
+    .profile-button {
+        height: 100px;
+        width: 200px;
     }
 
     .nav-section {

@@ -4,10 +4,13 @@
 
 {% block content %}
     <div class="container">
-        <p>Username: {{ username }}</p>
+        <p class="profile-param">Username:</p>
+        P
         <p>First name: {{ first_name }}</p>
         <p>Last name: {{ last_name }}</p>
         <p>Email: <a href="mailto:{{ email }}">{{ email }}</a></p>
+        <p>Date joined: {{ date_joined }}</p>
+        <p>Last login: {{ last_login }}</p>
         {% if is_their_profile %}
             <a class="profile-button" href="#">Edit</a>
             <a class="profile-button" href="{% url 'logout' %}">Sign out</a>

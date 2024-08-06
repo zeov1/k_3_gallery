@@ -47,7 +47,9 @@ def profile(request, username):
         'last_name': user.last_name,
         'profile_picture': None,
         'email': user.email,
-        'username': username,
+        'username': user.username,
+        'date_joined': user.date_joined,
+        'last_login': user.last_login,
         'is_authenticated': request.user.is_authenticated,
         'is_their_profile': request.user.username == username,
     }
