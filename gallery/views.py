@@ -37,7 +37,7 @@ def news(request, page_number):
         context['prev_page'] = page_number - 1
     if page_number < max_page:
         context['next_page'] = page_number + 1
-    return render(request, 'news.html', context)
+    return render(request, 'gallery/news.html', context)
 
 
 def profile(request, username):
@@ -53,4 +53,4 @@ def profile(request, username):
         context['username'] = request.user.username
     else:
         context['is_authenticated'] = False
-    return render(request, 'profile.html', context)
+    return render(request, 'gallery/profile.html', context)
