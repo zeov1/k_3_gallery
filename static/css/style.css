@@ -43,6 +43,21 @@ footer {
     margin: 0 auto;
 }
 
+/* Profile */
+
+.profile-param-wrapper {
+    display: flex;
+    margin: 10px 0;
+}
+
+.profile-param {
+    min-width: 300px;
+}
+
+.profile-data {
+
+}
+
 .profile-button {
     border: none;
     display: inline-block;
