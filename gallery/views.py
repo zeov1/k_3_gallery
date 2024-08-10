@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.http import HttpResponseNotFound
 from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render
@@ -14,17 +15,17 @@ def news_index(request):
     return redirect('news', '1')
 
 
-def news(request, page_number):
+def news(request):
+    page_number = request.GET.get('page_number', 1)
+    try:
+        page_number = int(page_number)
+    except ValueError:
+        return HttpResponseNotFound(f'Page {page_number} does not exist')
     if page_number < 1:
-        return redirect('news', '1')
+        page_number = 1
     context = {}
-    if request.user.is_authenticated:
-        context['is_authenticated'] = True
-        context['username'] = request.user.username
-    else:
-        context['is_authenticated'] = False
 
-    show_posts = 15  # how many posts are going to be shown at one page
+    show_posts = request.GET.get('show_posts', 15)
     first_post_number = show_posts * (page_number - 1)
     queryset = Image.objects.all()
     context['images'] = queryset[::-1][first_post_number:show_posts + first_post_number]
