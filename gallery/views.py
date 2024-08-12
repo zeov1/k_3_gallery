@@ -31,8 +31,16 @@ def news(request):
     if show_posts < 1:
         return HttpResponseBadRequest(f'Can\'t show {show_posts} posts. The number of posts must be at least 1!')
 
+    order_by = request.GET.get('sort', 'date')
+    queryset = Image.objects
+    if order_by == 'date':
+        queryset = queryset.order_by('date', 'time')
+    elif order_by == 'publisher':
+        queryset = queryset.order_by('author')
+    else:
+        return HttpResponseBadRequest(f'The posts can be ordered only by date or publisher!')
+
     first_post_number = show_posts * (page_number - 1)
-    queryset = Image.objects.all()
 
     length = len(queryset)
     max_page = (length + show_posts) // show_posts
@@ -42,6 +50,7 @@ def news(request):
         'max_page': max_page,
         'page': page_number,
         'show': show_posts,
+        'sort': order_by,
         'is_authenticated': request.user.is_authenticated,
         'username': request.user.username,
     }
@@ -58,6 +67,7 @@ def news_index(request):
     return redirect_params('news', {
         'page': 1,
         'show': 15,
+        'sort': 'date',
     })
 
 
