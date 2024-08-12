@@ -22,13 +22,13 @@
         <div class="container">
             <div class="bottom-nav-wrapper">
                 {% if prev_page %}
-                    <a class="arrow" href="{% url 'news' prev_page %}">←</a>
+                    <a class="arrow" href="{% url 'news' %}?page={{ prev_page }}&show={{ show }}">←</a>
                 {% else %}
                     <span class="arrow"></span>
                 {% endif %}
-                <p>page {{ page_number }} / {{ max_page }}</p>
+                <a href="{% url 'news_settings' %}">page {{ page }} / {{ max_page }}</a>
                 {% if next_page %}
-                    <a class="arrow" href="{% url 'news' next_page %}">→</a>
+                    <a class="arrow" href="{% url 'news' %}?page={{ next_page }}&show={{ show }}">→</a>
                 {% else %}
                     <span class="arrow"></span>
                 {% endif %}
