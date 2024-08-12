@@ -26,7 +26,6 @@ urlpatterns = [
     path('news_index/', news_index, name='news_index'),
     path('news/', news, name='news'),
     path('news/settings/', news_settings, name='news_settings'),
-
     path('profile/<str:username>/', profile, name='profile'),
     path('accounts/', include('accounts.urls'), name='accounts'),
     path('admin/', admin.site.urls, name='admin'),

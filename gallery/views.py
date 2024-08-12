@@ -42,6 +42,8 @@ def news(request):
         'max_page': max_page,
         'page': page_number,
         'show': show_posts,
+        'is_authenticated': request.user.is_authenticated,
+        'username': request.user.username,
     }
 
     if page_number > 1:
