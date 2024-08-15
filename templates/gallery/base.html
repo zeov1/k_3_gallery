@@ -20,8 +20,8 @@
         <nav class="nav">
             <ul class="nav">
                 <li class="nav"><a href="{% url 'news_index' %}">News</a></li>
-                {% if is_authenticated %}
-                    <li class="nav"><a href="{% url 'profile' username %}">Profile</a></li>
+                {% if user.is_authenticated %}
+                    <li class="nav"><a href="{% url 'profile' user.username %}">Profile</a></li>
                 {% else %}
                     <li class="nav"><a href="{% url 'login' %}">Sign in</a></li>
                 {% endif %}

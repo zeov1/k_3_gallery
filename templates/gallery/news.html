@@ -7,9 +7,9 @@
         <div class="gallery-grid">
             {% for image in images %}
                 <div class="gallery-flex">
-                    <div class="gallery-img">
+                    <a class="gallery-img" href="{% url 'picture' image.id %}">
                         <img class="gallery-img" src="{{ image.img.url }}" alt="{{ image.caption }}">
-                    </div>
+                    </a>
                     <p class="gallery-img">{{ image.author.username }} | {{ image.date }} | {{ image.time }}</p>
                 </div>
             {% endfor %}

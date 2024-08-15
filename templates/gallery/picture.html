@@ -1,0 +1,36 @@
+{% extends 'gallery/base.html' %}
+
+{% block title %}Picture{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="picture-wrapper">
+            <img class="picture" src="{{ image_object.img.url }}" alt="Picture">
+            <div class="picture-description">
+                <a href="{% url 'profile' image_object.author.username %}">{{ image_object.author.first_name }} {{ image_object.author.last_name }}</a>
+                <p>{{ image_object.date }} {{ image_object.time }}</p>
+                <p>{{ image_object.caption }}</p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+
+{% block bottom_nav %}
+    {#    <section class="bottom-naw-section">#}
+    {#        <div class="container">#}
+    {#            <div class="bottom-nav-wrapper">#}
+    {#                {% if prev_page %}#}
+    {#                    <a class="arrow" href="{% url 'news' %}?page={{ prev_page }}&show={{ show }}&sort={{ sort }}">←</a>#}
+    {#                {% else %}#}
+    {#                    <span class="arrow"></span>#}
+    {#                {% endif %}#}
+    {#                <a href="{% url 'news_settings' %}">page {{ page }} / {{ max_page }}</a>#}
+    {#                {% if next_page %}#}
+    {#                    <a class="arrow" href="{% url 'news' %}?page={{ next_page }}&show={{ show }}&sort={{ sort }}">→</a>#}
+    {#                {% else %}#}
+    {#                    <span class="arrow"></span>#}
+    {#                {% endif %}#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </section>#}
+{% endblock bottom_nav %}

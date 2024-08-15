@@ -51,8 +51,6 @@ def news(request):
         'page': page_number,
         'show': show_posts,
         'sort': order_by,
-        'is_authenticated': request.user.is_authenticated,
-        'username': request.user.username,
     }
 
     if page_number > 1:
@@ -87,7 +85,13 @@ def profile(request, username):
         'username': user.username,
         'date_joined': user.date_joined,
         'last_login': user.last_login,
-        'is_authenticated': request.user.is_authenticated,
         'is_their_profile': request.user.username == username,
     }
     return render(request, 'gallery/profile.html', context)
+
+
+def picture(request, picture_id):
+    image_object = get_object_or_404(Image, pk=picture_id)
+    return render(request, 'gallery/picture.html', {
+        'image_object': image_object,
+    })
