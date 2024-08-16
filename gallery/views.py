@@ -112,3 +112,12 @@ def picture_upload_done(request):
         return redirect('news_index')
     else:
         return redirect('picture_upload')
+
+
+def picture_delete(request, picture_id):
+    img = get_object_or_404(Image, pk=picture_id)
+    if request.user == img.author:
+        img.delete()
+        return redirect('news_index')
+    else:
+        return redirect('news_index')

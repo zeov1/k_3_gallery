@@ -13,6 +13,9 @@
                     ({{ image_object.author.first_name }} {{ image_object.author.last_name }})</a>
                 <p>{{ image_object.date }} {{ image_object.time }}</p>
                 <p>{{ image_object.caption }}</p>
+                {% if user == image_object.author %}
+                    <a class="profile-button" href="{% url 'picture_delete' image_object.id %}">Delete</a>
+                {% endif %}
             </div>
         </div>
     </div>

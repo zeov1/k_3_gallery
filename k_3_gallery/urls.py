@@ -19,7 +19,8 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
-from gallery.views import index, news, news_index, news_settings, profile, picture, picture_upload, picture_upload_done
+from gallery.views import (index, news, news_index, news_settings, profile, picture, picture_upload, \
+                           picture_upload_done, picture_delete)
 
 urlpatterns = [
     path('', index, name='index'),
@@ -30,6 +31,8 @@ urlpatterns = [
     path('picture/<int:picture_id>/', picture, name='picture'),
     path('picture/new/', picture_upload, name='picture_upload'),
     path('picture/new/done/', picture_upload_done, name='picture_upload_done'),
+    path('picture/<int:picture_id>/delete/', picture_delete, name='picture_delete'),
+
     path('accounts/', include('accounts.urls'), name='accounts'),
     path('admin/', admin.site.urls, name='admin'),
 ]
