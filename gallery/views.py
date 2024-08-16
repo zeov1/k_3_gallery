@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render
 
-from .forms import NewsSettingsForm
+from .forms import NewsSettingsForm, ImageForm
 from .models import Image
 from .tools import redirect_params
 
@@ -95,3 +95,20 @@ def picture(request, picture_id):
     return render(request, 'gallery/picture.html', {
         'image_object': image_object,
     })
+
+
+def picture_upload(request):
+    return render(request, 'gallery/picture_upload.html', {
+        'form': ImageForm,
+    })
+
+
+def picture_upload_done(request):
+    form = ImageForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        img = form.save(commit=False)
+        img.author = request.user
+        img.save()
+        return redirect('news_index')
+    else:
+        return redirect('picture_upload')

@@ -9,7 +9,8 @@
                 <img class="picture" src="{{ image_object.img.url }}" alt="Picture">
             </div>
             <div class="picture-description">
-                <a href="{% url 'profile' image_object.author.username %}">{{ image_object.author.first_name }} {{ image_object.author.last_name }}</a>
+                <a href="{% url 'profile' image_object.author.username %}">{{ image_object.author.username }}
+                    ({{ image_object.author.first_name }} {{ image_object.author.last_name }})</a>
                 <p>{{ image_object.date }} {{ image_object.time }}</p>
                 <p>{{ image_object.caption }}</p>
             </div>

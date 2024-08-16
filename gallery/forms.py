@@ -1,4 +1,6 @@
-from django.forms import Form, IntegerField, ChoiceField
+from django.forms import Form, IntegerField, ChoiceField, ModelForm
+
+from gallery.models import Image
 
 
 class NewsSettingsForm(Form):
@@ -8,3 +10,9 @@ class NewsSettingsForm(Form):
         ('date', 'date'),
         ('publisher', 'publisher'),
     ))
+
+
+class ImageForm(ModelForm):
+    class Meta:
+        model = Image
+        fields = ['img', 'caption']

@@ -19,7 +19,7 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
-from gallery.views import index, news, news_index, news_settings, profile, picture
+from gallery.views import index, news, news_index, news_settings, profile, picture, picture_upload, picture_upload_done
 
 urlpatterns = [
     path('', index, name='index'),
@@ -28,6 +28,8 @@ urlpatterns = [
     path('news/settings/', news_settings, name='news_settings'),
     path('profile/<str:username>/', profile, name='profile'),
     path('picture/<int:picture_id>/', picture, name='picture'),
+    path('picture/new/', picture_upload, name='picture_upload'),
+    path('picture/new/done/', picture_upload_done, name='picture_upload_done'),
     path('accounts/', include('accounts.urls'), name='accounts'),
     path('admin/', admin.site.urls, name='admin'),
 ]

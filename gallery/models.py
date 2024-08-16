@@ -23,4 +23,4 @@ class Image(models.Model):
     caption = models.CharField(max_length=200, blank=True)
 
     def __str__(self):
-        return f'{self.author} ({self.date} {self.time})'
+        return f'{self.author} ({self.date} | {self.time.hour}:{self.time.minute}:{self.time.second})'
