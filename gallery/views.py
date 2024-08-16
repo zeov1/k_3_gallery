@@ -98,14 +98,17 @@ def picture(request, picture_id):
 
 
 def picture_upload(request):
-    return render(request, 'gallery/picture_upload.html', {
-        'form': ImageForm,
-    })
+    if request.user.is_authenticated:
+        return render(request, 'gallery/picture_upload.html', {
+            'form': ImageForm,
+        })
+    else:
+        return redirect('login')
 
 
 def picture_upload_done(request):
     form = ImageForm(request.POST or None, request.FILES or None)
-    if form.is_valid():
+    if form.is_valid() and request.user.is_authenticated:
         img = form.save(commit=False)
         img.author = request.user
         img.save()
@@ -116,8 +119,6 @@ def picture_upload_done(request):
 
 def picture_delete(request, picture_id):
     img = get_object_or_404(Image, pk=picture_id)
-    if request.user == img.author:
+    if request.user == img.author or request.user.is_superuser:
         img.delete()
-        return redirect('news_index')
-    else:
-        return redirect('news_index')
+    return redirect('news_index')
