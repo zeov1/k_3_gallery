@@ -8,7 +8,7 @@
             {% for image in images %}
                 <div class="gallery-flex">
                     <a class="gallery-img" href="{% url 'picture' image.id %}">
-                        <img class="gallery-img" src="{{ image.img.url }}" alt="{{ image.caption }}">
+                        <img class="gallery-img" src="{{ image.thumbnail.url }}" alt="{{ image.caption }}">
                     </a>
                     <p class="gallery-img">{{ image.author.username }} | {{ image.date }} | {{ image.time }}</p>
                 </div>

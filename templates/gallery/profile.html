@@ -3,44 +3,53 @@
 {% block title %}{{ username }}{% endblock title %}
 
 {% block content %}
+
     <div class="container">
-        <div class="profile-param-wrapper">
-            <label for="id_username" class="profile-param">Username:</label>
-            <input id="id_username" class="profile-data" type="text" name="username" value="{{ username }}" readonly>
-        </div>
-        <div class="profile-param-wrapper">
-            <label for="id_first_name" class="profile-param">First name:</label>
-            <input id="id_first_name" class="profile-data" type="text" name="first_name" value="{{ first_name }}" readonly>
-        </div>
-        <div class="profile-param-wrapper">
-            <label for="id_last_name" class="profile-param">Last name:</label>
-            <input id="id_last_name" class="profile-data" type="text" name="last_name" value="{{ last_name }}" readonly>
-        </div>
-        <div class="profile-param-wrapper">
-            <label for="id_email" class="profile-param">Email:</label>
-            <input id="id_email" class="profile-data" type="email" name="email" value="{{ email }}" readonly>
+        <div class="profile-wrapper">
+            <div class="profile-param-wrapper">
+                <label for="id_username" class="profile-param">Username:</label>
+                <input id="id_username" class="profile-data" type="text" name="username" value="{{ username }}"
+                       readonly>
+            </div>
+            <div class="profile-param-wrapper">
+                <label for="id_first_name" class="profile-param">First name:</label>
+                <input id="id_first_name" class="profile-data" type="text" name="first_name" value="{{ first_name }}"
+                       readonly>
+            </div>
+            <div class="profile-param-wrapper">
+                <label for="id_last_name" class="profile-param">Last name:</label>
+                <input id="id_last_name" class="profile-data" type="text" name="last_name" value="{{ last_name }}"
+                       readonly>
+            </div>
+            <div class="profile-param-wrapper">
+                <label for="id_email" class="profile-param">Email:</label>
+                <input id="id_email" class="profile-data" type="email" name="email" value="{{ email }}" readonly>
 
-{#            <p class="profile-param">Email:</p>#}
-{#            <p class="profile-data"><a href="mailto:{{ email }}">{{ email }}</a></p>#}
-        </div>
-        <div class="profile-param-wrapper">
-            <label for="id_date_joined" class="profile-param">Date joined:</label>
-            <input id="id_date_joined" class="profile-data" type="text" name="date_joined" value="{{ date_joined }}" readonly>
+                {#            <p class="profile-param">Email:</p>#}
+                {#            <p class="profile-data"><a href="mailto:{{ email }}">{{ email }}</a></p>#}
+            </div>
+            <div class="profile-param-wrapper">
+                <label for="id_date_joined" class="profile-param">Date joined:</label>
+                <input id="id_date_joined" class="profile-data" type="text" name="date_joined" value="{{ date_joined }}"
+                       readonly>
 
-{#            <p class="profile-param">Date joined:</p>#}
-{#            <p class="profile-data">{{ date_joined }}</p>#}
-        </div>
-        <div class="profile-param-wrapper">
-            <label for="id_last_login" class="profile-param">Last login:</label>
-            <input id="id_last_login" class="profile-data" type="text" name="last_login" value="{{ last_login }}" readonly>
+                {#            <p class="profile-param">Date joined:</p>#}
+                {#            <p class="profile-data">{{ date_joined }}</p>#}
+            </div>
+            <div class="profile-param-wrapper">
+                <label for="id_last_login" class="profile-param">Last login:</label>
+                <input id="id_last_login" class="profile-data" type="text" name="last_login" value="{{ last_login }}"
+                       readonly>
 
-{#            <p class="profile-param">Last login:</p>#}
-{#            <p class="profile-data">{{ last_login }}</p>#}
-        </div>
+                {#            <p class="profile-param">Last login:</p>#}
+                {#            <p class="profile-data">{{ last_login }}</p>#}
+            </div>
 
-        {% if is_their_profile %}
-            <a class="profile-button" href="#">Edit</a>
-            <a class="profile-button" href="{% url 'logout' %}">Sign out</a>
-        {% endif %}
+            {% if is_their_profile %}
+                <a class="profile-button" href="#">Edit</a>
+                <a class="profile-button" href="{% url 'logout' %}">Sign out</a>
+            {% endif %}
+        </div>
     </div>
+    
 {% endblock content %}

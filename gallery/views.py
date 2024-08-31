@@ -43,7 +43,7 @@ def news(request):
     first_post_number = show_posts * (page_number - 1)
 
     length = len(queryset)
-    max_page = (length + show_posts) // show_posts
+    max_page = (length + show_posts - 1) // show_posts
 
     context = {
         'images': queryset[::-1][first_post_number:show_posts + first_post_number],

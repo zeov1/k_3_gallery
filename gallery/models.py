@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 
 class Comment(models.Model):
@@ -17,6 +19,10 @@ class Comment(models.Model):
 class Image(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     img = models.ImageField(upload_to='images', max_length=255)
+    thumbnail = ImageSpecField(source='img',
+                               processors=[ResizeToFill(200, 200)],
+                               format='JPEG',
+                               options={'quality': 60})
     date = models.DateField(auto_now=True)
     time = models.TimeField(auto_now=True)
     # date_modified = models.DateField()

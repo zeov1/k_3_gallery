@@ -92,6 +92,7 @@ footer {
 }
 
 .profile-button {
+    border-radius: 10px;
     border: none;
     display: inline-block;
     width: 100px;
@@ -101,6 +102,10 @@ footer {
     align-content: center;
     background: #8d99ae;
     color: white;
+}
+
+.picture-description .profile-button {
+    width: 100%;
 }
 
 input {
@@ -219,7 +224,7 @@ p.gallery-img {
 
 /* 992-1200 */
 @media screen and (max-width: 1200px) {
-    body, input, .profile-button {
+    body, input, .profile-button, select {
         font-size: 40px;
     }
 
