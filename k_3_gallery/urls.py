@@ -24,7 +24,7 @@ from gallery.views import (index, news, news_index, news_settings, profile, pict
 
 urlpatterns = [
     path('', index, name='index'),
-    path('news_index/', news_index, name='news_index'),
+    path('news/index/', news_index, name='news_index'),
     path('news/', news, name='news'),
     path('news/settings/', news_settings, name='news_settings'),
     path('profile/<str:username>/', profile, name='profile'),
