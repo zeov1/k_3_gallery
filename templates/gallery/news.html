@@ -10,7 +10,7 @@
                     <a class="gallery-img" href="{% url 'picture' image.id %}">
                         <img class="gallery-img" src="{{ image.thumbnail.url }}" alt="{{ image.caption }}">
                     </a>
-                    <p class="gallery-img">{{ image.author.username }} | {{ image.date }} | {{ image.time }}</p>
+                    <p class="gallery-img">{{ image.date|date:'d.m.y' }} | {{ image.author.username }}</p>
                 </div>
             {% endfor %}
         </div>
