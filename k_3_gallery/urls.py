@@ -20,7 +20,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 from gallery.views import (index, news, news_index, news_settings, profile, picture, picture_upload, \
-                           picture_upload_done, picture_delete)
+                           picture_upload_done, picture_delete, picture_edit, picture_edit_done)
 
 urlpatterns = [
     path('', index, name='index'),
@@ -32,6 +32,8 @@ urlpatterns = [
     path('picture/new/', picture_upload, name='picture_upload'),
     path('picture/new/done/', picture_upload_done, name='picture_upload_done'),
     path('picture/<int:picture_id>/delete/', picture_delete, name='picture_delete'),
+    path('picture/<int:picture_id>/edit/', picture_edit, name='picture_edit'),
+    path('picture/<int:picture_id>/edit/done/', picture_edit_done, name='picture_edit_done'),
 
     path('accounts/', include('accounts.urls'), name='accounts'),
     path('admin/', admin.site.urls, name='admin'),

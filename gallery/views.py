@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404
 from django.shortcuts import redirect
 from django.shortcuts import render
 
-from .forms import NewsSettingsForm, ImageForm
+from .forms import NewsSettingsForm, ImageForm, EditImageCaptionForm
 from .models import Image
 from .tools import redirect_params
 
@@ -121,4 +121,23 @@ def picture_delete(request, picture_id):
     img = get_object_or_404(Image, pk=picture_id)
     if request.user == img.author or request.user.is_superuser:
         img.delete()
+    return redirect('news_index')
+
+
+def picture_edit(request, picture_id):
+    img = get_object_or_404(Image, pk=picture_id)
+    if request.user == img.author or request.user.is_superuser:
+        return render(request, 'gallery/picture_edit.html', {
+            'image_object': img,
+        })
+
+
+def picture_edit_done(request, picture_id):
+    if request.method == 'POST':
+        img = get_object_or_404(Image, pk=picture_id)
+        if request.user == img.author or request.user.is_superuser:
+            form = EditImageCaptionForm(request.POST or None, instance=img)
+            if form.is_valid():
+                form.save()
+                return redirect('picture', picture_id=img.id)
     return redirect('news_index')

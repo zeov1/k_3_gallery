@@ -23,9 +23,8 @@ class Image(models.Model):
                                processors=[ResizeToFill(200, 200)],
                                format='JPEG',
                                options={'quality': 60})
-    date = models.DateField(auto_now=True)
-    time = models.TimeField(auto_now=True)
-    # date_modified = models.DateField()
+    date = models.DateField(auto_now_add=True)
+    time = models.TimeField(auto_now_add=True)
     caption = models.CharField(max_length=200, blank=True)
 
     def __str__(self):

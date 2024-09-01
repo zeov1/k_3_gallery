@@ -12,14 +12,11 @@
                 <a href="{% url 'profile' image_object.author.username %}">{{ image_object.author.username }}
                     ({{ image_object.author.first_name }} {{ image_object.author.last_name }})</a>
                 <p>{{ image_object.date }} {{ image_object.time }}</p>
-                <p>{{ image_object.caption }}</p>
-                {% if user == image_object.author or user.is_superuser %}
-                    <a class="profile-button" href="{% url 'picture_edit' image_object.id %}">Edit</a>
-                {% endif %}
-                {% if user == image_object.author or user.is_superuser %}
-                    <br><br>
-                    <a class="profile-button" href="{% url 'picture_delete' image_object.id %}">Delete</a>
-                {% endif %}
+                <form action="{% url 'picture_edit_done' image_object.id %}" method="POST">
+                    {% csrf_token %}
+                    <p><input type="text" value="{{ image_object.caption }}" placeholder="caption" name="caption"></p>
+                    <button type="submit" class="profile-button">Submit</button>
+                </form>
             </div>
         </div>
     </div>

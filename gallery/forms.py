@@ -16,3 +16,9 @@ class ImageForm(ModelForm):
     class Meta:
         model = Image
         fields = ['img', 'caption']
+
+
+class EditImageCaptionForm(ModelForm):
+    class Meta:
+        model = Image
+        fields = ['caption']
